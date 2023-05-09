@@ -1,0 +1,23 @@
+1. Go to https://www.saucedemo.com/
+Prepare python file with variables for xpath and css selectors for elements:
+
+-login input
+-password input
+-login button
+
+then login to app (credentials on page :)
+-menu hamburger button (left right corner)
+-all items (from hamburger menu)
+-about (from hamburger menu)
+-logout (from hamburger menu)
+-reset app stata (from hamburger menu)
+-cross to close hamburger menu
+-add to card button for 1st item
+-add to card button for 3rd item
+-cart button
+
+my proposal for naming is like this: 
+LOGIN_BUTTON_XPATH = "//button[@id='login']"
+LOGIN_BUTTON_CSS = "button#login"
+
+once you finished it, please commit it to repo and ping me to check :)
