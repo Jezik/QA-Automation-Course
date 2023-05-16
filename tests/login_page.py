@@ -28,3 +28,7 @@ def type_text_to_input(driver, text, selector):
 def click_on_element(driver, selector):
     WebDriverWait(driver, 15).until(EC.visibility_of_element_located((By.XPATH, selector)))
     driver.find_element(By.XPATH, selector).click()
+
+
+    #Some buteauful function
+    
