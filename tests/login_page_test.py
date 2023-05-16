@@ -1,20 +1,17 @@
 import time
+import sys
+sys.path.append("./pages")
+sys.path.append("./helpers")
+sys.path.append("./test_data")
+
 
 from login_page import *
-
-
-USERNAME_XPATH = "//*[@id='user-name']"
-USERNAME_CSS = "#user-name"
-
-PASSWORD_XPATH = "//*[@id='password']"
-PASSWORD_CSS = "#password"
-
-LOGIN_BUTTON_XPATH = "//*[@id='login-button']"
-LOGIN_BUTTON_CSS = "#login-button"
+from helpers import *
+from urls import *
 
 
 browser = webdriver.Chrome()
-browser.get("https://www.saucedemo.com/")
+browser.get(login_page)
 
 type_text_to_input(browser, "standard_user", USERNAME_XPATH)
 type_text_to_input(browser, "secret_sauce", PASSWORD_XPATH)
