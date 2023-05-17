@@ -1,23 +1,10 @@
+0. Read this https://selenium-python.readthedocs.io/getting-started.html (points from 2.1 to 2.5)
 1. Go to https://www.saucedemo.com/
-Prepare python file with variables for xpath and css selectors for elements:
+2. Create new branch called "exercise 2"
+3. Create automate test which:
+- login to app
+- add any product to cart
+- check if this product is visible on cart icon (there should be '1' on cart)
 
--login input
--password input
--login button
-
-then login to app (credentials on page :)
--menu hamburger button (left right corner)
--all items (from hamburger menu)
--about (from hamburger menu)
--logout (from hamburger menu)
--reset app stata (from hamburger menu)
--cross to close hamburger menu
--add to card button for 1st item
--add to card button for 3rd item
--cart button
-
-my proposal for naming is like this: 
-LOGIN_BUTTON_XPATH = "//button[@id='login']"
-LOGIN_BUTTON_CSS = "button#login"
-
-once you finished it, please commit it to repo and ping me to check :)
+New command in this exercise is "assert", its mentioned in above article so please read it.
+Once you finished it, please commit it to repo, setup new pull request and add me as reviever to check it :)
