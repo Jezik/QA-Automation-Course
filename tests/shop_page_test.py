@@ -7,6 +7,7 @@ sys.path.append("./test_data")
 
 
 from login_page import *
+from shop_page import *
 from helpers import *
 from urls import *
 
@@ -20,6 +21,8 @@ click_on_element(browser, LOGIN_BUTTON_XPATH)
 
 time.sleep(3)
 
-# If the login was successful we should see the label PRODUCTS_LABEL_XPATH
-def test_if_login_successful():
-    assert check_if_element_exists(browser, PRODUCTS_LABEL_XPATH) == True
+click_on_element(browser, ADD_TO_CART_SECOND_ITEM_XPATH)
+
+def test_item_added_to_cart():
+    assert check_if_element_exists(browser, SHOPPING_CART_BADGE_XPATH)
+    assert get_elem_text(browser, SHOPPING_CART_BADGE_XPATH) == "1"

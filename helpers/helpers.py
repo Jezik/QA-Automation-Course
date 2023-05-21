@@ -27,3 +27,7 @@ def check_if_element_exists(driver, selector):
     except NoSuchElementException:
         return False
     return True
+
+
+def get_elem_text(driver, selector):
+    return driver.find_element(By.XPATH, selector).text
