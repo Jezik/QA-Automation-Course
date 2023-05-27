@@ -10,7 +10,7 @@ from helpers import *
 from urls import *
 
 
-driver = webdriver.Chrome()
+driver = get_driver()
 driver.get(login_page)
 
 type_text_to_input(driver, "standard_user", USERNAME_XPATH)

@@ -5,6 +5,18 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
+from selenium.webdriver.chrome.options import Options
+
+
+def get_chrome_options():
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    return chrome_options
+
+
+def get_driver():
+    driver = webdriver.Chrome(chrome_options=get_chrome_options())
+    return driver
 
 
 def type_text_to_input(driver, text, selector):
