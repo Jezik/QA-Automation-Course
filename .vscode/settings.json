@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./pages",
+        "./test_data",
+        "./helpers"
+    ]
+}
