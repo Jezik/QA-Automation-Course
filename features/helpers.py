@@ -10,13 +10,13 @@ from selenium.webdriver.chrome.options import Options
 
 def get_chrome_options():
     chrome_options = Options()
-    chrome_options.add_argument("--headless")
+    # chrome_options.add_argument("--headless")
     return chrome_options
 
 
-def get_driver():
-    driver = webdriver.Chrome(chrome_options=get_chrome_options())
-    return driver
+def get_driver(context):
+    context.driver = webdriver.Chrome(chrome_options=get_chrome_options())
+    return context.driver
 
 
 def type_text_to_input(driver, text, selector):
@@ -33,9 +33,9 @@ def click_on_element(driver, selector):
     driver.find_element(By.XPATH, selector).click()
 
 
-def check_if_element_exists(driver, selector):
+def check_if_element_exists(context, selector):
     try:
-        driver.find_element(By.XPATH, selector)
+        context.driver.find_element(By.XPATH, selector)
     except NoSuchElementException:
         return False
     return True
