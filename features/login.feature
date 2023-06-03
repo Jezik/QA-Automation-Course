@@ -1,10 +1,9 @@
-Feature: Loggin feature
+Feature: Log in feature
 
-
-    Feature Description
-
-Scenario: Successful login
+Background: Common steps for logging in
     Given User starts at login page
-    Then User ia able to see login and password inputs
+    Then User is able to see login and password inputs
     When User types proper credentials and proceed
-    # Then User should be logged in
+
+Scenario: Successful login    
+    Then The user can see a shop layout
