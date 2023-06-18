@@ -11,10 +11,12 @@ PASSWORD_CSS = "#password"
 LOGIN_BUTTON_XPATH = "//*[@id='login-button']"
 LOGIN_BUTTON_CSS = "#login-button"
 
+LOGIN_ERROR_FIELD = "//*[@id='login_button_container']/div/form/div[3]"
+
 
 @given("User starts at login page")
 def open_login_page(context):
-    context.driver = get_driver(context)
+    #context.driver = get_driver(context)
     context.driver.get(login_page)
 
 
@@ -29,3 +31,14 @@ def type_proper_credentials(context):
     type_text_to_input(context, "standard_user", USERNAME_XPATH)
     type_text_to_input(context, "secret_sauce", PASSWORD_XPATH)
     click_on_element(context, LOGIN_BUTTON_XPATH)
+
+
+@when("User types wrong e-mail and right password and proceed")
+def type_wrong_email(context):
+    type_text_to_input(context, "wrong_email", USERNAME_XPATH)
+    type_text_to_input(context, "secret_sauce", PASSWORD_XPATH)
+    click_on_element(context, LOGIN_BUTTON_XPATH)
+
+@then("User should see error field with error message")
+def assert_error_field_shown(context):
+    check_if_element_exists(context, LOGIN_ERROR_FIELD)
