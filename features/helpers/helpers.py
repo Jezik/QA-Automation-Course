@@ -1,13 +1,12 @@
 import time
 
-from selenium import webdriver
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.support.ui import Select
 
 
 def type_text_to_input(context, text, selector):
@@ -33,6 +32,7 @@ def check_if_element_exists(context, selector):
 
 
 def get_elem_text(context, selector):
+    WebDriverWait(context.driver, 15).until(EC.visibility_of_element_located((By.XPATH, selector)))
     return context.driver.find_element(By.XPATH, selector).text
 
 
@@ -81,3 +81,39 @@ def remove_list_item(context, selector):
 
 def switch_to_iFrame(context, selector):
     context.driver.switch_to.frame(selector)
+
+
+def text_in_element_attribute(context, selector, attribute, text):
+    WebDriverWait(context.driver, 20).until(EC.text_to_be_present_in_element_attribute((By.XPATH, selector), attribute, text))
+
+
+def get_elem_state(context, selector):
+    element = context.driver.find_element(By.XPATH, selector)
+    prop = element.get_property("disabled")
+    return prop
+
+
+def select_dropdown_item_by_text(context, selector, visible_text):
+    drop = Select(context.driver.find_element(By.XPATH, selector))
+    drop.select_by_visible_text(visible_text)
+
+
+def wait_elem_to_disappear(context, selector):
+    WebDriverWait(context.driver, 15).until(EC.invisibility_of_element_located((By.XPATH, selector)))
+
+
+def upload_file(context, selector, filepath):
+    upload_elem = context.driver.find_element(By.XPATH, selector)
+    upload_elem.send_keys(filepath)
+
+
+def get_alert_text(context):
+    alert = WebDriverWait(context.driver, 5).until(EC.alert_is_present())
+    text = alert.text
+    alert.accept()
+    return text
+
+
+def check_current_url_against_pattern(context, pattern):
+    current_url = context.driver.current_url
+    return current_url.endswith(pattern)
