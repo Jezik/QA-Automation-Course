@@ -1,3 +1,7 @@
 login_page = "https://www.saucedemo.com/"
 to_do_list_page = "http://webdriveruniversity.com/To-Do-List/index.html"
 iFrame_page = "http://webdriveruniversity.com/IFrame/index.html"
+attribute_test_page = "http://webdriveruniversity.com/Accordion/index.html"
+checkboxes_test_page = "http://webdriveruniversity.com/Dropdown-Checkboxes-RadioButtons/index.html"
+ajax_spinner_page = "http://webdriveruniversity.com/Ajax-Loader/index.html"
+image_upload_page = "http://webdriveruniversity.com/File-Upload/index.html"
