@@ -117,3 +117,9 @@ def get_alert_text(context):
 def check_current_url_against_pattern(context, pattern):
     current_url = context.driver.current_url
     return current_url.endswith(pattern)
+
+
+def scroll_page(context, selector):
+    element = context.driver.find_element(By.XPATH, selector)
+    actions = ActionChains(context.driver)
+    actions.move_to_element(element).perform()
