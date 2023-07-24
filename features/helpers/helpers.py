@@ -1,4 +1,6 @@
 import time
+import os
+import json
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -7,6 +9,12 @@ from selenium.webdriver.common.keys import Keys
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import Select
+from faker import Faker
+
+
+WORKING_DIR = os.getcwd()
+FILENAME = "faker_generated_data.json"
+FILEPATH = WORKING_DIR + "\\features\\test_data\\" + FILENAME
 
 
 def type_text_to_input(context, text, selector):
@@ -123,3 +131,34 @@ def scroll_page(context, selector):
     element = context.driver.find_element(By.XPATH, selector)
     actions = ActionChains(context.driver)
     actions.move_to_element(element).perform()
+
+
+def generate_user_data(context):
+    fake = Faker()
+    context.first_name = fake.first_name()
+    context.last_name = fake.last_name()
+    context.email = fake.email()
+    context.address = fake.address()
+    context.phone_number = fake.phone_number()
+
+
+def save_data_to_json_file(context):  
+    user_data = {
+        "first_name": f"{context.first_name}",
+        "last_name": f"{context.last_name}",
+        "email": f"{context.email}",
+        "address": f"{context.address}",
+        "phone": f"{context.phone_number}"
+    }
+
+    json_object = json.dumps(user_data, indent=4)
+
+    with open(FILEPATH, "w") as out_json_file:
+        out_json_file.write(json_object)
+
+
+def get_data_from_json():
+    with open(FILEPATH, "r") as json_data:
+        user_data = json.load(json_data)
+        
+    return user_data["address"]
