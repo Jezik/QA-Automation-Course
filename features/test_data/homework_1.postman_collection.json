@@ -1,0 +1,101 @@
+{
+	"info": {
+		"_postman_id": "eb5e6f9b-c7e0-4e30-9f7f-2eb3b9b6e61b",
+		"name": "homework_1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10637139",
+		"_collection_link": "https://cloudy-meteor-795456.postman.co/workspace/test_workspace~f57b101b-7b25-4cda-89e6-628e47e0e30c/collection/10637139-eb5e6f9b-c7e0-4e30-9f7f-2eb3b9b6e61b?action=share&creator=10637139&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "POST_apple_getId",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const response = pm.response.json();\r",
+							"pm.globals.set(\"itemId\", response.id);\r",
+							"\r",
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n   \"name\": \"Apple MacBook Pro M2\",\r\n   \"data\": {\r\n      \"year\": 2023,\r\n      \"price\": 1234,\r\n      \"CPU model\": \"Apple M2 Max\",\r\n      \"Hard disk size\": \"2 TB\"\r\n   }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://api.restful-api.dev/objects",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET_mac_verify_price",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Price is 1234\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData[0].data.price).to.eql(1234);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.restful-api.dev/objects?id={{itemId}}",
+					"protocol": "https",
+					"host": [
+						"api",
+						"restful-api",
+						"dev"
+					],
+					"path": [
+						"objects"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{itemId}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
