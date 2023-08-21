@@ -6,3 +6,5 @@ checkboxes_test_page = "http://webdriveruniversity.com/Dropdown-Checkboxes-Radio
 ajax_spinner_page = "http://webdriveruniversity.com/Ajax-Loader/index.html"
 image_upload_page = "http://webdriveruniversity.com/File-Upload/index.html"
 scrolling_page = "http://webdriveruniversity.com/Scrolling/index.html"
+mobile_emulation_page = "https://chromedriver.chromium.org/mobile-emulation"
+chromedriver_mobile_page = "https://chromedriver.chromium.org/home"

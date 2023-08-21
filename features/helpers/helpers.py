@@ -127,6 +127,10 @@ def check_current_url_against_pattern(context, pattern):
     return current_url.endswith(pattern)
 
 
+def scroll_page_to_bottom(context):
+    context.driver.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+    
+
 def scroll_page(context, selector):
     element = context.driver.find_element(By.XPATH, selector)
     actions = ActionChains(context.driver)
